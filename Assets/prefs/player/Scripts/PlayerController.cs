@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 public abstract class PlayerController : MonoBehaviour
 {
     protected Rigidbody2D _rb;
@@ -37,6 +37,9 @@ public abstract class PlayerController : MonoBehaviour
         {
             _jumpPower = 6.0f;
         }
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     // Update is called once per frame
@@ -46,6 +49,24 @@ public abstract class PlayerController : MonoBehaviour
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
         );
+
+        _anim.SetBool("isRun", Math.Abs(_movementDirection.x) > 0.05f ? true : false);
+
+        if (isGrounded)
+        {
+            _anim.SetInteger("JumpStudy", 0);
+        }
+        else if (!isGrounded)
+        {
+            if (_rb.velocity.y > 0.5f)
+            {
+                _anim.SetInteger("JumpStudy", 1);
+            }
+            else
+            {
+                _anim.SetInteger("JumpStudy", 2);
+            }
+        }
 
         CheckGround();
         CheckFlip();
