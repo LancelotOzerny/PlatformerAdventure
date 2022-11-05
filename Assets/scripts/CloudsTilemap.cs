@@ -2,26 +2,30 @@ using UnityEngine;
 
 public class CloudsTilemap : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private float _hPos = 0.0f;
+    [SerializeField] private float _speed = 1.0f;
 
-    Vector3 _startPos;
-    [SerializeField] private Vector2 stepCount = Vector2.one;
-    [SerializeField] private Vector2 stepOnDistance = Vector2.one;
+    [SerializeField] private float _leftBorder = -100;
+    [SerializeField] private float _rightBorder = 80;
 
     private void Awake()
     {
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-        _startPos = player.transform.position;
+        transform.position = new Vector2(_hPos, transform.position.y);
     }
 
     private void Update()
     {
-        transform.position = new Vector2 (
-            _startPos.x + (_startPos.x - player.transform.position.x) / stepOnDistance.x * stepCount.x,
-            _startPos.y + (_startPos.y - player.transform.position.y) / stepOnDistance.y * stepCount.y
+        transform.position = new Vector2(
+            transform.position.x - Time.deltaTime * _speed,
+            transform.position.y
         );
+
+        if (transform.position.x < _leftBorder)
+        {
+            transform.position = new Vector2(
+                _rightBorder,
+                transform.position.y
+            );
+        }
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c24fb163a74784c4dbcac1005ac65235
+guid: ae1e1b1e68f387f44a8e9ee107ee88de
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -118,34 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gun_sheet_1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 184a19f8e0d6237409b9c48906eb7cf4
-      internalID: 2046875947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gun_sheet_1_1
+      name: gun_sheet_1 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +132,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fa162d25f17b3741bdb874751ff2e29
-      internalID: 2104129022
+      spriteID: 49179e42ca5b00348b4401e00c1852dd
+      internalID: 408967216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gun_sheet_1 1_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a55cf8018f605245b35502c5974e3f7
+      internalID: 1587271893
       vertices: []
       indices: 
       edges: []
@@ -170,8 +170,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gun_sheet_1_1: 2104129022
-      gun_sheet_1_0: 2046875947
+      gun_sheet_1 1_1: 1587271893
+      gun_sheet_1 1_0: 408967216
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
