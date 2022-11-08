@@ -12,4 +12,9 @@ public class MasterMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Continue()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetInt("LastLevel", 1));
+    }
 }
