@@ -47,7 +47,7 @@ public abstract class PlayerController : MonoBehaviour
     {
         _movementDirection = new Vector2(
             Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical")
+            Input.GetKey(KeyCode.Space) ? 1 : 0
         );
 
         _anim.SetBool("isRun", Math.Abs(_movementDirection.x) > 0.05f ? true : false);
@@ -75,7 +75,7 @@ public abstract class PlayerController : MonoBehaviour
     protected void FixedUpdate()
     {
         _rb.velocity = new Vector2(_movementDirection.x * _movementSpeed, _rb.velocity.y);
-        if (_movementDirection.y > 0 && isGrounded)
+        if (_movementDirection.y > 0 && isGrounded && !Input.GetKey(KeyCode.E))
         {
             Jump();
         }

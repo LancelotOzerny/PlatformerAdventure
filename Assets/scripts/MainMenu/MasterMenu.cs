@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MasterMenu : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.visible = true;  
+    }
+
     public void OpenScene(int sceneCount)
     {
         SceneManager.LoadScene(sceneCount);
