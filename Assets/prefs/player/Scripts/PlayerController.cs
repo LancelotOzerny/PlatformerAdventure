@@ -38,8 +38,8 @@ public abstract class PlayerController : MonoBehaviour
             _jumpPower = 6.0f;
         }
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        /*Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;*/
     }
 
     // Update is called once per frame
@@ -75,7 +75,7 @@ public abstract class PlayerController : MonoBehaviour
     protected void FixedUpdate()
     {
         _rb.velocity = new Vector2(_movementDirection.x * _movementSpeed, _rb.velocity.y);
-        if (_movementDirection.y > 0 && isGrounded && !Input.GetKey(KeyCode.E))
+        if (_movementDirection.y > 0 && isGrounded)
         {
             Jump();
         }
