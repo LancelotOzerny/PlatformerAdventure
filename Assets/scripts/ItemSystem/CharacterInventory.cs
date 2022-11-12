@@ -16,7 +16,7 @@ public class CharacterInventory : MonoBehaviour
         }    
     }
 
-    private void AddItem(Item item)
+    public void AddItem(Item item)
     {
         _inventoryItems.Add(item);
         inventoryVisual.AddItem(item);

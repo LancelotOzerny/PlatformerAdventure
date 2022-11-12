@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryPanel : MonoBehaviour
 {
@@ -48,8 +47,8 @@ public class InventoryPanel : MonoBehaviour
         _itemDescriptionField.enabled = true;
         _itemIconField.enabled = true;
 
-        _itemNameField.text = item.itemName;
-        _itemDescriptionField.text = item.itemDescription;
+        _itemNameField.text += item.itemName;
+        _itemDescriptionField.text = item.itemDescription + "\n\n" + item.GetAttributesInfo();
         _itemIconField.sprite = item.itemImage;
     }
 
