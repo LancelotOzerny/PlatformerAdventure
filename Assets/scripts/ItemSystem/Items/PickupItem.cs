@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickupItem : MonoBehaviour
@@ -16,9 +14,25 @@ public class PickupItem : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _sr = GetComponent<SpriteRenderer>();
-
-        _sr.sprite = _item.itemImage;
+        Set(_item);
         _size = transform.localScale;
+    }
+
+    public void Set(Item item)
+    {
+        if (item != null)
+        {
+            _item = item;
+            _sr.sprite = _item.itemImage;
+        }
+    }
+
+    public void Set(ItemVisual item)
+    {
+        if (item != null)
+        {
+            _item = item.VisualItem;
+        }
     }
 
     private void Update()

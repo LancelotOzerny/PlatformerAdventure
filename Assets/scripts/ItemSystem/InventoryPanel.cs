@@ -6,7 +6,6 @@ public class InventoryPanel : MonoBehaviour
     public GameObject InventoryPanelVisual;
     public CharacterInventory inventory;
     public Transform inventoryItemsPanel;
-
     public GameObject itemVisualPrefab;
 
     [Header("Information Fields")]
@@ -14,6 +13,10 @@ public class InventoryPanel : MonoBehaviour
     [SerializeField] private Text _itemDescriptionField;
     [SerializeField] private Image _itemIconField;
     [SerializeField] private Image _itemIconBorder;
+
+    [Header("Item Prefab")]
+    [SerializeField] private GameObject _itemPrefab;
+    private ItemVisual _currentItem = null;
 
     private void Start()
     {
@@ -25,6 +28,15 @@ public class InventoryPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             ChangeInventoryActive();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && InventoryPanelVisual.activeSelf && _currentItem)
+        {
+            GameObject obj = Instantiate(_itemPrefab);
+            obj.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            obj.GetComponent<PickupItem>().Set(_currentItem);
+            Destroy(_currentItem.gameObject);
+            HideInfo();
         }
     }
 
@@ -40,20 +52,24 @@ public class InventoryPanel : MonoBehaviour
         newItem.GetComponent<ItemVisual>().Init(item);
     }
 
-    public void ShowInfo(Item item)
+    public void ShowInfo(ItemVisual item)
     {
+        _currentItem = item;
+
         _itemIconBorder.enabled = true;
         _itemNameField.enabled = true;
         _itemDescriptionField.enabled = true;
         _itemIconField.enabled = true;
 
-        _itemNameField.text += item.itemName;
-        _itemDescriptionField.text = item.itemDescription + "\n\n" + item.GetAttributesInfo();
-        _itemIconField.sprite = item.itemImage;
+        _itemNameField.text += item.VisualItem.itemName;
+        _itemDescriptionField.text = item.VisualItem.itemDescription + "\n\n" + item.VisualItem.GetAttributesInfo();
+        _itemIconField.sprite = item.VisualItem.itemImage;
     }
 
     public void HideInfo()
     {
+        _currentItem = null;
+
         _itemIconBorder.enabled = false;
         _itemNameField.enabled = false;
         _itemDescriptionField.enabled = false;

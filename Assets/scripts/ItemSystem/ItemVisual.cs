@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class ItemVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Item _item;
     [SerializeField] private Image img;
+    public Item VisualItem { get { return _item; } }
 
     public void Init(Item item)
     {
@@ -15,7 +17,7 @@ public class ItemVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GetComponentInParent<InventoryPanel>().ShowInfo(_item);
+        GetComponentInParent<InventoryPanel>().ShowInfo(this);
     }
 
     public void OnPointerExit(PointerEventData e)
