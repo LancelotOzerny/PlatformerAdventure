@@ -10,9 +10,23 @@ public class UpgradeItem : UsableItem
     public int strengthCount;
     public int abilityCount;
 
-    public override void Action()
+    public override void Action(ItemVisual item)
     {
+        PlayerAttributes _attributes = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttributes>();
 
+        _attributes.Health.MaxValue += hpCount;
+        _attributes.Health.Add(hpCount);
+
+        _attributes.Mana.MaxValue += manaCount;
+        _attributes.Mana.Add(manaCount);
+
+        _attributes.Strength.MaxValue += strengthCount;
+        _attributes.Strength.Add(strengthCount);
+
+        _attributes.Ability.MaxValue += abilityCount;
+        _attributes.Ability.Add(abilityCount);
+
+        Destroy(item.gameObject);
     }
 
     public override string GetAttributesInfo()

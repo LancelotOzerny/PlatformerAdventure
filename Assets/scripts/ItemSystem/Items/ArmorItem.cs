@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "My Assets/Armor Item")]
-public class ArmorItem : Item
+public class ArmorItem : UsableItem
 {
     [Header("Armor Attributes")]
     public int healthUp;
@@ -14,5 +14,9 @@ public class ArmorItem : Item
         string armorString = armorUp > 0 ? $"Повышение брони: {armorUp};" : "";
         
         return healthUpString + "\n" + armorString;
+    }
+    public override void Action(ItemVisual item)
+    {
+
     }
 }

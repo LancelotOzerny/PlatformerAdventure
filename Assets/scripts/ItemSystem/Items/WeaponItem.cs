@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "My Assets/Weapon Item")]
-public class WeaponItem : Item
+public class WeaponItem : UsableItem
 {
     [Space(20)]
     [Header("Weapon Attributes")]
@@ -21,5 +21,11 @@ public class WeaponItem : Item
         frequencyMissString += frequencyMiss != 0 & damage > 0 ? $"{System.Math.Round(1 / (double)frequencyMiss, 3)}" : "0.000";
 
         return damageString + "\n" + distanceString + "\n" + frequencyMissString;
+    }
+
+    public override void Action(ItemVisual item)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<ShootControler>().SetCurrentWeapon(this);
     }
 }

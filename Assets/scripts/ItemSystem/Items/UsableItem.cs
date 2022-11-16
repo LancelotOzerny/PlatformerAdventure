@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class UsableItem : Item
 {
-    abstract public void Action();
+    abstract public void Action(ItemVisual item);
 }

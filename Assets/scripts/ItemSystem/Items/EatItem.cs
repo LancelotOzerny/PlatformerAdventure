@@ -9,10 +9,17 @@ public class EatItem : UsableItem
     public int manaRecoveryCount;
     public int hpRecoveryCount;
 
-    public override void Action()
+    public override void Action(ItemVisual item)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log($"{player.name} + {manaRecoveryCount} mana + {hpRecoveryCount} health");
+        PlayerAttributes _attributes = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttributes>();
+
+        _attributes.Health.MaxValue += hpRecoveryCount;
+        _attributes.Health.Add(hpRecoveryCount);
+
+        _attributes.Mana.MaxValue += manaRecoveryCount;
+        _attributes.Mana.Add(manaRecoveryCount);
+
+        Destroy(item.gameObject);
     }
 
     public override string GetAttributesInfo()
